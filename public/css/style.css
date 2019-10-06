@@ -1,7 +1,19 @@
 body {
-	background-color: brown;
+	background-color: #dadada;
 }
 
 h1 {
 	color: red;
+}
+
+.heretheform {
+	margin-top: 100px;
+	margin-left: 350px;
+	margin-right: 350px;
+	margin-bottom: 100px;
+}
+
+canvas {
+	border: 1px solid black;
+	background-color: rgb(232, 240, 254);
 }

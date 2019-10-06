@@ -31,7 +31,7 @@ app.get('/petition', (req, res) => {
 
 app.post('/petition', (req, res) => {
 	console.log('req.body is: ', req.body);
-	// To be written
+	// To be written // NEXT STEP TO DO ON MONDAY, connect this post route with the database "petition", table "petition"
 	//        -if the "INSERT" is successful, redirect to thanks page
 	//        -if the "INSERT" fails, render form with error message
 	res.sendStatus(404);

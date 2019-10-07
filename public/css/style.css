@@ -17,3 +17,20 @@ canvas {
 	border: 1px solid black;
 	background-color: rgb(232, 240, 254);
 }
+
+#signernames {
+	color: red;
+}
+
+#signedtext {
+	color: #4852ad;
+	font-size: 18px;
+}
+
+h3 {
+	background-color: none;
+}
+
+h3:nth-of-type(even) {
+	background-color: pink;
+}

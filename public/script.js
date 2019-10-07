@@ -1,6 +1,7 @@
 (function() {
 	const ctx = document.getElementById('signcanvas').getContext('2d');
 	const drawing = document.getElementById('signcanvas');
+	const signature = document.getElementById('signature');
 	var axisX;
 	var axisY;
 	var clicked = false;
@@ -23,8 +24,9 @@
 	// Store the image data value in a variable
 
 	function signatureToUrl() {
-		signatureUrl = drawing.toDataURL();
-		console.log(signatureUrl);
+		var signatureUrl = drawing.toDataURL();
+		signature.value = signatureUrl;
+		console.log(signature.value);
 	}
 
 	// Call this when the submit button is clicked instead?//

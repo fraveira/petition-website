@@ -1,1 +1,9 @@
+<div class="signers-block">
 <p>Thanks for your signature! I promise I won't get a mortgage, or open a line of credit with it.</p>
+{{!-- Loop through the array of names and surnames --}}
+
+{{#each signers}}
+<h3> -  <span id="signernames">{{first}} {{last}}</span> <span id="signedtext">signed the petition, THANK YOU!</span></h3>
+
+</div>
+{{/each}}

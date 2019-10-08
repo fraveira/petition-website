@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const hb = require('express-handlebars');
 const cookieSession = require('cookie-session');
-const csurf = app.engine('handlebars', hb());
+const csurf = require('csurf');
+
+app.engine('handlebars', hb());
 app.set('view engine', 'handlebars');
 
 // Static:
@@ -11,12 +13,6 @@ app.set('view engine', 'handlebars');
 app.use(express.static('./public'));
 
 // MIDDLEWARE:
-
-app.use(function(req, res, next) {
-	res.set('x-frame-options', 'DENY');
-	console.log('Time, Middleware running! :', Date.now());
-	next();
-});
 
 app.use(
 	cookieSession({
@@ -31,7 +27,14 @@ app.use(
 	})
 );
 // This goes
-//app.use(csurf());
+app.use(csurf());
+
+app.use(function(req, res, next) {
+	res.set('x-frame-options', 'DENY');
+	res.locals.csrfToken = req.csrfToken();
+	console.log('Middleware running!');
+	next();
+});
 
 // ROUTES:
 
@@ -75,7 +78,6 @@ app.get('/thanks', (req, res) => {
 		return db
 			.getSoloSignature(cookieID)
 			.then((result) => {
-				console.log('This is the big url that represents the pic', result.rows[0]);
 				res.render('thanks', {
 					layout: 'main',
 					signature: result.rows[0].signature,
@@ -86,14 +88,12 @@ app.get('/thanks', (req, res) => {
 				console.log('error happened', err);
 			});
 	});
-	// Make another database URL to get the cookie based on the cookie, that's based on the
 });
 
 app.get('/signers', (req, res) => {
 	db
 		.getSupporters()
 		.then((result) => {
-			console.log('This is the result', result);
 			res.render('signers', {
 				layout: 'main',
 				signers: result.rows // Renders template "signers"
@@ -102,17 +102,6 @@ app.get('/signers', (req, res) => {
 		.catch((err) => {
 			console.log('error happened', err);
 		});
-});
-
-app.get('/test', (req, res) => {
-	req.session.sigId = 10;
-	console.log('req.session in /test before redirect: ', req.session);
-	res.redirect('/'); // DELETE THIS AFTER THE CLASS IS OVER.
-});
-
-app.get('*', (req, res) => {
-	req.session.cohort = 'coriander';
-	res.redirect('/');
 });
 
 app.listen(8080, () => console.log('Petition Server running succesfully'));

@@ -38,37 +38,54 @@ app.use(
 app.get('/', (req, res) => {
 	console.log('req.session in / route: ', req.session);
 	res.redirect('/petition');
-	// res.render("petition");
 });
 
 app.get('/petition', (req, res) => {
-	res.render('petition');
+	if (req.session.signatureId) {
+		res.redirect('/thanks');
+	} else {
+		res.render('petition');
+	}
 });
 
 app.post('/petition', (req, res) => {
 	console.log(req.body.first);
 	console.log(req.body.last);
 	console.log(req.body.signature);
+	console.log(req.body.id);
 	let first = req.body.first;
 	let last = req.body.last;
 	let signature = req.body.signature;
 	db
 		.createSupport(first, last, signature)
-		.then(() => {
+		.then((result) => {
+			req.session.signatureId = result.rows[0].id; // To be written
 			res.redirect('/thanks');
 		})
 		.catch((err) => {
 			console.log('error happened', err);
 		});
-
-	// res.sendStatus(404);
-	// When you are adding a signature to the database you ar ecreating an ID.
-
-	//res.render('petition', { error: true });
 });
 
 app.get('/thanks', (req, res) => {
-	res.render('thanks');
+	console.log(req.session.signatureId);
+	let cookieID = req.session.signatureId;
+
+	db.getNrOfSigners().then((total) => {
+		return db
+			.getSoloSignature(cookieID)
+			.then((result) => {
+				console.log('This is the big url that represents the pic', result.rows[0]);
+				res.render('thanks', {
+					layout: 'main',
+					signature: result.rows[0].signature,
+					nrofsigners: total.rows
+				});
+			})
+			.catch((err) => {
+				console.log('error happened', err);
+			});
+	});
 	// Make another database URL to get the cookie based on the cookie, that's based on the
 });
 

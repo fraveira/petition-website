@@ -40,7 +40,6 @@ app.use(function(req, res, next) {
 // ROUTES:
 
 app.get('/', (req, res) => {
-	console.log('req.session in / route: ', req.session);
 	// If user logged in, then take them to /thanks.
 	res.redirect('/register');
 });
@@ -48,7 +47,6 @@ app.get('/', (req, res) => {
 // PETITION ROUTES
 
 app.get('/petition', (req, res) => {
-	console.log('These are the cookies inside /petition', req.session);
 	if (req.session.signatureId) {
 		res.redirect('/thanks');
 	} else {
@@ -57,8 +55,6 @@ app.get('/petition', (req, res) => {
 });
 
 app.post('/petition', (req, res) => {
-	console.log(req.body.signature);
-	console.log('This is req.body.id', req.body.id); // Undefined.
 	let signature = req.body.signature;
 	db
 		.createSupport(signature, req.session.userId) // add user-id here?
@@ -135,6 +131,42 @@ app.post('/register', (req, res) => {
 	});
 });
 
-app.listen(process.env.PORT || 8080, () => console.log('Petition Server running succesfully'));
+app.get('/login', (req, res) => {
+	if (req.session.userId) {
+		return res.redirect('/petition');
+	}
+	res.render('login', {
+		layout: 'main'
+	});
+});
 
-//
+app.post('/login', (req, res) => {
+	let email = req.body.email;
+	let submittedPass = req.body.password;
+	let userPassword;
+	db
+		.retrievingPassword(email)
+		.then(({ rows }) => {
+			userPassword = rows[0].password;
+			return userPassword;
+		})
+		.then((userPassword) => {
+			return bcrypt.compare(submittedPass, userPassword); // compares given password and existing password.
+		})
+		.then((areTheSame) => {
+			if (areTheSame) {
+				db.loggedId(email).then((id) => {
+					req.session.userId = id.rows[0].id;
+					return res.redirect('/petition');
+				});
+			} else {
+				return res.render('login', { error: true });
+			}
+		})
+		.catch((error) => {
+			console.log(error);
+			return res.render('login', { error: true });
+		});
+});
+
+app.listen(process.env.PORT || 8080, () => console.log('Petition Server running succesfully'));

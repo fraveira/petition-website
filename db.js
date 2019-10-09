@@ -26,3 +26,11 @@ module.exports.registeringUsers = (first_name, last_name, email, hash) => {
 		hash
 	]);
 };
+
+module.exports.retrievingPassword = (email) => {
+	return db.query('SELECT password FROM users WHERE email = $1', [ email ]);
+};
+
+module.exports.loggedId = (email) => {
+	return db.query('SELECT id FROM users WHERE email = $1', [ email ]);
+};

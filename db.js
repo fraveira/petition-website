@@ -14,8 +14,15 @@ module.exports.getNrOfSigners = () => {
 	return db.query(`SELECT COUNT(*) FROM petition`);
 };
 
+module.exports.checkSoloSignature = (id) => {
+	return db.query(`SELECT user_id FROM petition WHERE user_id = $1 `, [ id ]);
+};
+
 module.exports.getSoloSignature = (id) => {
-	return db.query(`SELECT signature FROM petition WHERE ID = $1 `, [ id ]);
+	return db.query(
+		`SELECT signature, first FROM petition LEFT JOIN users ON users.id = petition.user_id WHERE user_id = $1`,
+		[ id ]
+	);
 };
 
 module.exports.registeringUsers = (first_name, last_name, email, hash) => {

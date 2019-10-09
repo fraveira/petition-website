@@ -49,8 +49,21 @@ app.get('/', (req, res) => {
 app.get('/petition', (req, res) => {
 	if (req.session.signatureId) {
 		res.redirect('/thanks');
+	} else if (req.session.userId) {
+		db
+			.checkSoloSignature(req.session.userId)
+			.then(({ rows }) => {
+				if (rows[0]) {
+					res.redirect('/thanks');
+				} else {
+					res.render('petition');
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	} else {
-		res.render('petition');
+		res.redirect('/register');
 	}
 });
 
@@ -68,7 +81,7 @@ app.post('/petition', (req, res) => {
 });
 
 app.get('/thanks', (req, res) => {
-	let cookieID = req.session.signatureId;
+	let cookieID = req.session.userId;
 
 	db.getNrOfSigners().then((total) => {
 		return db
@@ -77,7 +90,8 @@ app.get('/thanks', (req, res) => {
 				res.render('thanks', {
 					layout: 'main',
 					signature: result.rows[0].signature,
-					nrofsigners: total.rows
+					nrofsigners: total.rows,
+					first: result.rows[0].first
 				});
 			})
 			.catch((err) => {

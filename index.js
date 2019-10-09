@@ -4,6 +4,7 @@ const app = express();
 const hb = require('express-handlebars');
 const cookieSession = require('cookie-session');
 const csurf = require('csurf');
+const bcrypt = require('./bcrypt');
 
 app.engine('handlebars', hb());
 app.set('view engine', 'handlebars');
@@ -26,7 +27,7 @@ app.use(
 		extended: false
 	})
 );
-// This goes
+
 app.use(csurf());
 
 app.use(function(req, res, next) {
@@ -40,8 +41,11 @@ app.use(function(req, res, next) {
 
 app.get('/', (req, res) => {
 	console.log('req.session in / route: ', req.session);
-	res.redirect('/petition');
+	// If user logged in, then take them to /thanks.
+	res.redirect('/register');
 });
+
+// PETITION ROUTES
 
 app.get('/petition', (req, res) => {
 	if (req.session.signatureId) {
@@ -104,4 +108,34 @@ app.get('/signers', (req, res) => {
 		});
 });
 
-app.listen(8080, () => console.log('Petition Server running succesfully'));
+// Register routes:
+
+app.get('/register', (req, res) => {
+	res.render('registration');
+});
+
+app.post('/register', (req, res) => {
+	console.log(req.body.first_name);
+	console.log(req.body.last_name);
+	console.log(req.body.email);
+	console.log(req.body.password);
+	let first_name = req.body.first_name;
+	let last_name = req.body.last_name;
+	let email = req.body.email;
+	let password = req.body.password;
+
+	bcrypt.hash(password).then((hash) => {
+		db
+			.registeringUsers(first_name, last_name, email, hash)
+			.then(() => {
+				res.redirect('/petition');
+			})
+			.catch((err) => {
+				console.log('error happened', err);
+			});
+	});
+});
+
+app.listen(process.env.PORT || 8080, () => console.log('Petition Server running succesfully'));
+
+//

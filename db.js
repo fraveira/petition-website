@@ -1,5 +1,5 @@
 const spicedPg = require('spiced-pg');
-const db = spicedPg(`postgres:postgres:postgres@localhost:5432/petition`);
+const db = spicedPg(process.env.DATABASE_URL || `postgres:postgres:postgres@localhost:5432/petition`);
 
 module.exports.createSupport = (first, last, signature) => {
 	return db.query(`INSERT INTO petition (first, last, signature) values ($1, $2, $3) RETURNING id;`, [
@@ -19,4 +19,13 @@ module.exports.getNrOfSigners = () => {
 
 module.exports.getSoloSignature = (id) => {
 	return db.query(`SELECT signature FROM petition WHERE ID = $1 `, [ id ]);
+};
+
+module.exports.registeringUsers = (first_name, last_name, email, hash) => {
+	return db.query(`INSERT INTO users (first, last, email, password) values ($1, $2, $3, $4);`, [
+		first_name,
+		last_name,
+		email,
+		hash
+	]);
 };

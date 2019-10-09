@@ -48,6 +48,7 @@ app.get('/', (req, res) => {
 // PETITION ROUTES
 
 app.get('/petition', (req, res) => {
+	console.log('These are the cookies inside /petition', req.session);
 	if (req.session.signatureId) {
 		res.redirect('/thanks');
 	} else {
@@ -56,15 +57,11 @@ app.get('/petition', (req, res) => {
 });
 
 app.post('/petition', (req, res) => {
-	console.log(req.body.first);
-	console.log(req.body.last);
 	console.log(req.body.signature);
-	console.log(req.body.id);
-	let first = req.body.first;
-	let last = req.body.last;
+	console.log('This is req.body.id', req.body.id); // Undefined.
 	let signature = req.body.signature;
 	db
-		.createSupport(first, last, signature)
+		.createSupport(signature, req.session.userId) // add user-id here?
 		.then((result) => {
 			req.session.signatureId = result.rows[0].id; // To be written
 			res.redirect('/thanks');
@@ -75,7 +72,6 @@ app.post('/petition', (req, res) => {
 });
 
 app.get('/thanks', (req, res) => {
-	console.log(req.session.signatureId);
 	let cookieID = req.session.signatureId;
 
 	db.getNrOfSigners().then((total) => {
@@ -98,6 +94,7 @@ app.get('/signers', (req, res) => {
 	db
 		.getSupporters()
 		.then((result) => {
+			console.log(result.rows);
 			res.render('signers', {
 				layout: 'main',
 				signers: result.rows // Renders template "signers"
@@ -127,7 +124,9 @@ app.post('/register', (req, res) => {
 	bcrypt.hash(password).then((hash) => {
 		db
 			.registeringUsers(first_name, last_name, email, hash)
-			.then(() => {
+			.then(({ rows }) => {
+				console.log('Inside whatever');
+				req.session.userId = rows[0].id;
 				res.redirect('/petition');
 			})
 			.catch((err) => {

@@ -114,22 +114,21 @@ app.get('/signers', (req, res) => {
 		});
 });
 
-// app.get('/signers/:city', (req, res) => {
-// 	// get the city value (req.params???)
-// 	console.log(req.params.city);
-// 	let city = req.params.city;
-// 	db
-// 		.getSignersByCity(city)
-// 		.then((city) => {
-// 			res.render('signers', {
-// 				layout: 'main',
-// 				signers: city.rows // Renders template "signers"
-// 			});
-// 		})
-// 		.catch((err) => {
-// 			console.log('error happened', err);
-// 		});
-// });
+app.get('/signers/:city', (req, res) => {
+	console.log(req.params.city);
+	let city = req.params.city;
+	db
+		.getSignersByCity(city)
+		.then((city) => {
+			res.render('signers', {
+				layout: 'main',
+				signers: city.rows // Renders template "signers"
+			});
+		})
+		.catch((err) => {
+			console.log('error happened', err);
+		});
+});
 
 // Register routes:
 

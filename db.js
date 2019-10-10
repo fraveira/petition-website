@@ -53,9 +53,9 @@ module.exports.creatingProfile = (age, city, url, user_id) => {
 	]);
 };
 
-// module.exports.getSignersByCity = (city) => {
-// 	return db.query(
-// 		`SELECT first, last FROM petition LEFT JOIN users ON users.id = petition.user_id LEFT JOIN user_profiles ON users.id = user_profiles.user_id WHERE LOWER(city) = LOWER($1)`,
-// 		[ city ]
-// 	);
-// };
+module.exports.getSignersByCity = (city) => {
+	return db.query(
+		`SELECT first, last, age, city, url FROM petition LEFT JOIN users ON users.id = petition.user_id LEFT JOIN user_profiles ON users.id = user_profiles.user_id WHERE LOWER(city) = LOWER($1)`,
+		[ city ]
+	);
+};

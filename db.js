@@ -7,7 +7,9 @@ module.exports.createSupport = (signature, user_id) => {
 
 module.exports.getSupporters = () => {
 	// return db.query(`SELECT first, last FROM users`); // join will do this. We need to select the users that have a signature
-	return db.query(`SELECT first, last FROM petition LEFT JOIN users ON users.id = user_id`);
+	return db.query(
+		`SELECT first, last, age, city, url FROM petition LEFT JOIN users ON users.id = petition.user_id LEFT JOIN user_profiles ON users.id = user_profiles.user_id`
+	);
 };
 
 module.exports.getNrOfSigners = () => {
@@ -35,9 +37,25 @@ module.exports.registeringUsers = (first_name, last_name, email, hash) => {
 };
 
 module.exports.retrievingPassword = (email) => {
-	return db.query('SELECT password FROM users WHERE email = $1', [ email ]);
+	return db.query(`SELECT password FROM users WHERE email = $1`, [ email ]);
 };
 
 module.exports.loggedId = (email) => {
-	return db.query('SELECT id FROM users WHERE email = $1', [ email ]);
+	return db.query(`SELECT id FROM users WHERE email = $1`, [ email ]);
 };
+
+module.exports.creatingProfile = (age, city, url, user_id) => {
+	return db.query(`INSERT INTO user_profiles (age, city, url, user_id) values ($1, $2, $3, $4) RETURNING id`, [
+		age || null,
+		city,
+		url,
+		user_id
+	]);
+};
+
+// module.exports.getSignersByCity = (city) => {
+// 	return db.query(
+// 		`SELECT first, last FROM petition LEFT JOIN users ON users.id = petition.user_id LEFT JOIN user_profiles ON users.id = user_profiles.user_id WHERE LOWER(city) = LOWER($1)`,
+// 		[ city ]
+// 	);
+// };

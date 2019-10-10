@@ -104,7 +104,6 @@ app.get('/signers', (req, res) => {
 	db
 		.getSupporters()
 		.then((result) => {
-			console.log(result.rows);
 			res.render('signers', {
 				layout: 'main',
 				signers: result.rows // Renders template "signers"
@@ -115,6 +114,23 @@ app.get('/signers', (req, res) => {
 		});
 });
 
+// app.get('/signers/:city', (req, res) => {
+// 	// get the city value (req.params???)
+// 	console.log(req.params.city);
+// 	let city = req.params.city;
+// 	db
+// 		.getSignersByCity(city)
+// 		.then((city) => {
+// 			res.render('signers', {
+// 				layout: 'main',
+// 				signers: city.rows // Renders template "signers"
+// 			});
+// 		})
+// 		.catch((err) => {
+// 			console.log('error happened', err);
+// 		});
+// });
+
 // Register routes:
 
 app.get('/register', (req, res) => {
@@ -122,8 +138,6 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-	console.log(req.body.first_name);
-	console.log(req.body.last_name);
 	console.log(req.body.email);
 	console.log(req.body.password);
 	let first_name = req.body.first_name;
@@ -135,15 +149,16 @@ app.post('/register', (req, res) => {
 		db
 			.registeringUsers(first_name, last_name, email, hash)
 			.then(({ rows }) => {
-				console.log('Inside whatever');
 				req.session.userId = rows[0].id;
-				res.redirect('/petition');
+				res.redirect('/profile'); // BEFORE, THIS WAS REDIRECTING TO /petition.
 			})
 			.catch((err) => {
 				console.log('error happened', err);
 			});
 	});
 });
+
+// Login routes
 
 app.get('/login', (req, res) => {
 	if (req.session.userId) {
@@ -181,6 +196,36 @@ app.post('/login', (req, res) => {
 			console.log(error);
 			return res.render('login', { error: true });
 		});
+});
+
+// Profile routes
+
+app.get('/profile', function(req, res) {
+	res.render('profile', {
+		layout: 'main'
+	});
+});
+
+app.post('/profile', function(req, res) {
+	let age = req.body.age;
+	let city = req.body.city;
+	let url = req.body.url;
+	let user_id = req.session.userId;
+	if (age != '' || city != '' || url != '') {
+		db.creatingProfile(age, city, url, user_id).then((id) => {
+			req.session.profileId = id.rows[0].id;
+			res.redirect('/petition');
+		});
+	} else {
+		res.redirect('/petition'); // In any case (DB query mediante or not), when CONTINUE is clicked, they can come here.
+	}
+});
+
+// Logout final route.
+
+app.get('/logout', function(req, res) {
+	req.session.userId = null;
+	res.redirect('/register');
 });
 
 app.listen(process.env.PORT || 8080, () => console.log('Petition Server running succesfully'));

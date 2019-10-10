@@ -3,7 +3,10 @@
 {{!-- Loop through the array of names and surnames --}}
 
 {{#each signers}}
-<h3> -  <span id="signernames">{{first}} {{last}}</span> <span id="signedtext">signed the petition, THANK YOU!</span></h3>
-
+{{#if url}}
+<h3> -  <span id="signernames"><a href="{{url}}">{{first}} {{last}}</a></span> <a href="/signers/{{city}}">{{city}}</a> {{age}} <span id="signedtext">signed the petition, THANK YOU!</span></h3>
 </div>
+{{else}}
+<h3> -  <span id="signernames">{{first}} {{last}}</span> <a href="/signers/{{city}}">{{city}}</a> {{age}} {{url}} <span id="signedtext">signed the petition, THANK YOU!</span></h3>
+{{/if}}
 {{/each}}

@@ -59,3 +59,52 @@ module.exports.getSignersByCity = (city) => {
 		[ city ]
 	);
 };
+
+module.exports.displayProfile = (user_id) => {
+	return db.query(
+		`
+    SELECT first, last, email, age, city, url
+    FROM users
+    LEFT JOIN user_profiles
+    ON users.id = user_profiles.user_id
+    WHERE users.id = $1
+    `,
+		[ user_id ]
+	);
+};
+
+module.exports.editUsersInfo = (first, last, email, user_id) => {
+	return db.query(
+		`
+        UPDATE users SET first = $1, last = $2, email = $3
+        WHERE id = $4
+        `,
+		[ first, last, email, user_id ]
+	);
+};
+
+module.exports.editUsersProfile = (age, city, url, user_id) => {
+	return db.query(
+		`
+        INSERT INTO user_profiles (age, city, url, user_id)
+        VALUES ($1, $2, $3, $4)
+        ON CONFLICT (user_id)
+        DO UPDATE SET age = $1, city = $2, url = $3
+        `,
+		[ age || null, city || null, url || null, user_id ] // Age same as creatingProfile.
+	);
+};
+
+module.exports.editPasswordPlusOthers = (first, last, email, password, user_id) => {
+	return db.query(
+		`
+        UPDATE users SET first = $1, last = $2, email = $3, password = $4
+        WHERE id =$5
+        `,
+		[ first, last, email, password, user_id ]
+	);
+};
+
+module.exports.deleteSignature = (id) => {
+	return db.query(`DELETE FROM petition WHERE user_id = $1`, [ id ]);
+};

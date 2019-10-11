@@ -80,6 +80,8 @@ app.post('/petition', (req, res) => {
 		});
 });
 
+// Thanks routes.
+
 app.get('/thanks', (req, res) => {
 	let cookieID = req.session.userId;
 
@@ -98,6 +100,18 @@ app.get('/thanks', (req, res) => {
 				console.log('error happened', err);
 			});
 	});
+});
+
+app.post('/thanks/delete', (req, res) => {
+	db
+		.deleteSignature(req.session.userId)
+		.then(() => {
+			req.session.signatureId = null;
+			res.redirect('/petition');
+		})
+		.catch((err) => {
+			console.log('error happened', err);
+		});
 });
 
 app.get('/signers', (req, res) => {
@@ -152,7 +166,7 @@ app.post('/register', (req, res) => {
 				res.redirect('/profile'); // BEFORE, THIS WAS REDIRECTING TO /petition.
 			})
 			.catch((err) => {
-				console.log('error happened', err);
+				console.log('error happened, maybe user typed an existing-email.', err);
 			});
 	});
 });
@@ -220,10 +234,71 @@ app.post('/profile', function(req, res) {
 	}
 });
 
+app.get('/profile/edit', function(req, res) {
+	let userId = req.session.userId;
+	db.displayProfile(userId).then(({ rows }) => {
+		res.render('editprofile', {
+			layout: 'main',
+			rows
+		});
+	});
+});
+
+app.post('/profile/edit', function(req, res) {
+	let first = req.body.first;
+	let last = req.body.last;
+	let email = req.body.email;
+	let password = req.body.password; // Logic to be written to consider password edit.
+	let age = req.body.age;
+	let city = req.body.city;
+	let url = req.body.url;
+	console.log(req.body);
+
+	if (password) {
+		bcrypt
+			.hash(password)
+			.then((hash) => {
+				password = hash;
+				return password;
+			})
+			.then((password) => {
+				db
+					.editPasswordPlusOthers(first, last, email, password, req.session.userId)
+					.then(() => {
+						db
+							.editUsersProfile(age, city, url, req.session.userId)
+							.then(() => {
+								res.redirect('/thanks');
+							})
+							.catch((err) => {
+								console.log(err);
+							});
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	} else {
+		db
+			.editUsersInfo(first, last, email, req.session.userId)
+			.then(() => {
+				return db.editUsersProfile(age, city, url, req.session.userId).then(() => {
+					res.redirect('/thanks');
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}
+});
+
 // Logout final route.
 
 app.get('/logout', function(req, res) {
-	req.session.userId = null;
+	req.session = null;
 	res.redirect('/register');
 });
 

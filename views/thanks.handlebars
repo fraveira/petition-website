@@ -9,3 +9,10 @@
 <a href="/signers"><h3>So far {{count}} users have signed our petition!!</h3></a>
 {{/each}}
 
+<form action="/thanks/delete" method="POST"> 
+        <div class="form-group">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+  </div>
+    <button class="deletingsignature">Delete your signature :(</button>
+</form>
+

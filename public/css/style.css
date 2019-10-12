@@ -1,5 +1,13 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
 body {
-	background-color: #dadada;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/desktback.jpg");
+	background-size: cover;
+	background-position: 000px -120px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 h1 {
@@ -11,6 +19,91 @@ h1 {
 	margin-left: 350px;
 	margin-right: 350px;
 	margin-bottom: 100px;
+}
+
+.regiform {
+	margin: auto;
+	margin-top: 10%;
+	width: 50%;
+	height: auto;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.92);
+	border: 5px solid;
+	border-image-source: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+	border-image-slice: 1;
+}
+
+/* .registerbtn {
+
+	position: relative;
+	border-radius: 6px;
+} */
+
+button.registerbtn {
+	width: 20%;
+	margin: 0 0.3em 0.3em 0;
+	margin-left: 40%;
+	margin-right: 40%;
+	display: inline-block;
+	padding: 0.7em 1.7em;
+	border-radius: 0.2em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	color: #ffffff;
+	background-color: #3369ff;
+	box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17), inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+		inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+	text-align: center;
+	position: relative;
+}
+button.registerbtn:active {
+	box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+}
+
+button.loginbtn {
+	width: 20%;
+	margin: 0 0.3em 0.3em 0;
+	margin-left: 40%;
+	margin-right: 40%;
+	display: inline-block;
+	padding: 0.7em 1.7em;
+	border-radius: 0.2em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	color: #ffffff;
+	background-color: #00a71c;
+	box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17), inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+		inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+	text-align: center;
+	position: relative;
+}
+button.loginbtn:active {
+	box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+}
+
+a#nounderline {
+	text-decoration: none;
+	color: white;
+}
+
+.form-control {
+	width: 50%;
+	height: 40px;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	position: relative;
+	border-radius: 6px;
+	box-shadow: 2px 1px 2px 1px #e7e7e7;
+}
+
+#tologin {
+	color: white;
 }
 
 canvas {
@@ -45,4 +138,27 @@ h3:nth-of-type(even) {
 	color: #069;
 	text-decoration: underline;
 	cursor: pointer;
+}
+
+footer {
+	background: #666666;
+	height: 30px;
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	overflow: hidden;
+}
+
+.footer {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding: 7px 40px;
+	color: white;
+	font-size: 14px;
+	margin: auto;
+}
+
+#redheart {
+	color: red;
 }

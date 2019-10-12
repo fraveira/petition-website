@@ -225,10 +225,14 @@ app.post('/profile', function(req, res) {
 	let url = req.body.url;
 	let user_id = req.session.userId;
 	if (age != '' || city != '' || url != '') {
-		db.creatingProfile(age, city, url, user_id).then((id) => {
-			req.session.profileId = id.rows[0].id;
-			res.redirect('/petition');
-		});
+		if (url != '' && !url.startsWith('http://') && !url.startsWith('https://')) {
+			res.render('profile', { error: true });
+		} else {
+			db.creatingProfile(age, city, url, user_id).then((id) => {
+				req.session.profileId = id.rows[0].id;
+				res.redirect('/petition');
+			});
+		}
 	} else {
 		res.redirect('/petition'); // In any case (DB query mediante or not), when CONTINUE is clicked, they can come here.
 	}

@@ -1,5 +1,4 @@
 <div class="regiform">
-<p>This is coming from registration.handlebars</p>
 <form method="POST">
         <div class="form-group">
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
@@ -16,7 +15,8 @@
   <div class="form-group">
     <input type="password" class="form-control" name="password" placeholder="Password">
   </div>
-  <button>Register</button>
-  <p>Or if you have an account, please <a href="/login">Log in!</a></p>
+  <button class="registerbtn">Register</button>
+  <p id="tologin">Or if you have an account, please</p>
 </form>
+   <a id="nounderline" href="/login"><button class="loginbtn">Log in!</button></a>
 </div>

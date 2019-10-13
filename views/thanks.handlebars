@@ -1,18 +1,21 @@
-<h2>Thank you {{first}} for signing out petition to make Internet a platform blabliblablo</h2>
+<div class="heretheform">
+<h2 class="petitionstyles">Thank you, {{first}}, for signing our petition to make Internet a platform that everybody can enjoy hustle free!</h2>
 
-<p>Feel free to click the following link to see all our supporters:</p>
+<h4 class="petitionstyles">This is your signature:</h4>
 
 
-<img src="{{signature}}" alt="">
+<img class="petitionstyles" src="{{signature}}" alt="">
 
 {{#each nrofsigners}}
-<a href="/signers"><h3>So far {{count}} users have signed our petition!!</h3></a>
+<h4 class="petitionstyles">So far {{count}} users have signed our petition!!</h4>
+<a id="nounderline" href="/signers"><h4 class="petitionstyles">CLICK HERE to see a full list of our Supporters!</h4></a>
 {{/each}}
 
 <form action="/thanks/delete" method="POST"> 
         <div class="form-group">
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
   </div>
-    <button class="deletingsignature">Delete your signature :(</button>
+    <button class="deletingsignature">Delete your signature 😢</button>
 </form>
 
+</div>

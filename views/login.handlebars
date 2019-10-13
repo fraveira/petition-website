@@ -1,16 +1,15 @@
-<div class="loginform">
-<p>This is coming from login.handlebars</p>
+<div class="regiform">
 <form method="POST">
- <div class="form-group">
+ <div class="form-cont">
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
   </div>
   <div class="form-group">
-    <input type="email" name="email" placeholder="email">
+    <input type="email" name="email" placeholder="E-mail" class="form-control">
   </div>
   <div class="form-group">
-    <input type="password" name="password" placeholder="Password">
+    <input type="password" name="password" placeholder="Password" class="form-control">
   </div>
-  <button>Log In</button>
+  <button class="loginbtn">Log In</button>
 </form>
-<p>Or if you don't have an account, please <a href="/register">Register</a> now!</p>
+<p id="tologin">Or if you don't have an account, please <a href="/register">Register</a> now!</p>
 </div>

@@ -147,7 +147,7 @@ app.get('/signers/:city', (req, res) => {
 // Register routes:
 
 app.get('/register', (req, res) => {
-	res.render('registration');
+	res.render('registration', { layout: 'mainlog' });
 });
 
 app.post('/register', (req, res) => {
@@ -178,7 +178,7 @@ app.get('/login', (req, res) => {
 		return res.redirect('/petition');
 	}
 	res.render('login', {
-		layout: 'main'
+		layout: 'mainlog'
 	});
 });
 

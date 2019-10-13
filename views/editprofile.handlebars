@@ -1,27 +1,26 @@
-<div class="updatingprofile">
-<p>This is coming from editprofile.handlebars</p>
+<div class="loginform">
 {{#each rows}}
 <form method="POST">
     <div class="form-group">
-    <input type="text" name="first" value="{{first}}">
+    <input type="text" name="first" class="form-control" value="{{first}}">
     </div>
       <div class="form-group">
-    <input type="text" name="last" value="{{last}}">
+    <input type="text" name="last" class="form-control" value="{{last}}">
     </div>
       <div class="form-group">
-    <input type="email" name="email" value="{{email}}">
+    <input type="email" name="email" class="form-control" value="{{email}}">
     </div>
     <div class="form-group">
-        <input type="password" name="password" >
+        <input type="password" name="password" class="form-control" >
     </div>
     <div class="form-group">
-    <input type="number" name="age" value="{{age}}">
+    <input type="number" name="age" class="form-control" value="{{age}}">
     </div>
   <div class="form-group">
-    <input type="text" name="city" value="{{city}}">
+    <input type="text" name="city" class="form-control" value="{{city}}">
     </div>
       <div class="form-group">
-    <input type="url" name="url" value="{{url}}">
+    <input type="url" name="url" class="form-control" value="{{url}}">
     </div>
 
     {{/each}}
@@ -30,6 +29,6 @@
         <input type="hidden" name="_csrf" value="{{csrfToken}}">
   </div>
 
-<button>UPDATE</button>
+<button class="registerbtn" id="updates">UPDATE</button>
 </form>
 </div>

@@ -10,7 +10,7 @@
 
 	var signing = function(x, y, clicked) {
 		if (clicked) {
-			ctx.strokeStyle = '#2971f0';
+			ctx.strokeStyle = '#ffffff';
 			ctx.lineWidth = 3;
 			ctx.beginPath();
 			ctx.moveTo(axisX, axisY);

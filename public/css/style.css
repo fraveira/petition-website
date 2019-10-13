@@ -80,6 +80,12 @@ img.petitionstyles {
 	justify-content: center;
 }
 
+h3.signerstyles {
+	text-align: left;
+	vertical-align: center;
+	color: white;
+}
+
 button.registerbtn {
 	width: 20%;
 	margin: 0 0.3em 0.3em 0;

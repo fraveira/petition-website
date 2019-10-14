@@ -1,4 +1,4 @@
--- Creating table for the users. 
+-- Creating table for the users.
 
 DROP TABLE IF EXISTS users
 CASCADE;

@@ -52,4 +52,8 @@
 	});
 
 	drawing.addEventListener('click', signatureToUrl); // Event happens when mouse is down and then leaves, aka click.
+
+	$('.clear').on('click', function() {
+		location.reload();
+	});
 })();

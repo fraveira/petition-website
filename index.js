@@ -68,6 +68,7 @@ app.get('/petition', (req, res) => {
 });
 
 app.post('/petition', (req, res) => {
+	console.log('Posting petition performed, coming from submit orange btn');
 	let signature = req.body.signature;
 	db
 		.createSupport(signature, req.session.userId) // add user-id here?

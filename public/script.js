@@ -6,8 +6,6 @@
     var axisY;
     var clicked = false;
 
-    // How to draw.
-
     var signing = function(x, y, clicked) {
         if (clicked) {
             ctx.strokeStyle = "#ffffff";
@@ -21,17 +19,12 @@
         axisY = y;
     };
 
-    // Store the image data value in a variable
 
     function signatureToUrl() {
         var signatureUrl = drawing.toDataURL();
         signature.value = signatureUrl;
         console.log(signature.value);
     }
-
-    // Call this when the submit button is clicked instead?//
-
-    // The events: //
 
     drawing.addEventListener("mousedown", function(d) {
         clicked = true;
@@ -59,7 +52,7 @@
         clicked = false;
     });
 
-    drawing.addEventListener("click", signatureToUrl); // Event happens when mouse is down and then leaves, aka click.
+    drawing.addEventListener("click", signatureToUrl); 
 
     $(".clear").on("click", function() {
         location.reload();

@@ -1,274 +1,249 @@
 html {
-    position: relative;
-    min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url("/assets/nback.jpg");
-    background-size: cover;
-    background-position: 000px -120px;
-    font-family: "Roboto Mono", monospace;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/nback.jpg");
+	background-size: cover;
+	background-position: 000px -120px;
+	font-family: "Roboto Mono", monospace;
 }
 
 h1 {
-    color: red;
+	color: red;
 }
 
 .heretheform {
-    margin: auto;
-    margin-top: 2%;
-    margin-bottom: 5%;
-    width: 75%;
-    height: auto;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.9);
-    border: 3px solid;
-    border-image-source: linear-gradient(
-        45deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(9, 9, 121, 1) 0%,
-        rgb(253, 255, 255) 100%
-    );
-    border-image-slice: 1;
+	margin: auto;
+	margin-top: 2%;
+	margin-bottom: 5%;
+	width: 75%;
+	height: auto;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.9);
+	border: 3px solid;
+	border-image-source: linear-gradient(45deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgb(253, 255, 255) 100%);
+	border-image-slice: 1;
 }
 
 .regiform,
 .loginform {
-    margin: auto;
-    margin-top: 10%;
-    margin-bottom: 5%;
-    width: 50%;
-    height: auto;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.92);
-    border: 3px solid;
-    border-image-source: linear-gradient(
-        90deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(9, 9, 121, 1) 0%,
-        rgba(0, 212, 255, 1) 100%
-    );
-    border-image-slice: 1;
+	margin: auto;
+	margin-top: 10%;
+	margin-bottom: 5%;
+	width: 50%;
+	height: auto;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.92);
+	border: 3px solid;
+	border-image-source: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+	border-image-slice: 1;
 }
 
 .gifvideo {
-    width: 50%;
-    height: 400px;
-    margin-left: 25%;
-    margin-right: 25%;
+	width: 50%;
+	height: 400px;
+	margin-left: 25%;
+	margin-right: 25%;
 }
 
-/* .registerbtn {
-
-	position: relative;
-	border-radius: 6px;
-} */
-
 h2.petitionstyles {
-    text-align: center;
-    vertical-align: center;
+	text-align: center;
+	vertical-align: center;
 }
 
 h3.petitionstyles {
-    text-align: center;
-    vertical-align: center;
+	text-align: center;
+	vertical-align: center;
 }
 
 h4.petitionstyles {
-    text-align: center;
-    vertical-align: center;
+	text-align: center;
+	vertical-align: center;
 }
 
 img.petitionstyles {
-    margin-left: 25%;
-    margin-right: 25%;
-    border: 1px solid white;
+	margin-left: 25%;
+	margin-right: 25%;
+	border: 1px solid white;
 }
 
 .petitionstyles {
-    color: white;
-    justify-content: center;
+	color: white;
+	justify-content: center;
 }
 
 h3.signerstyles {
-    text-align: left;
-    vertical-align: center;
-    color: white;
+	text-align: left;
+	vertical-align: center;
+	color: white;
 }
 
 button.clear {
-    width: 20%;
-    margin: 0 0.3em 0.3em 0;
-    margin-top: 15px;
-    margin-left: 40%;
-    margin-right: 40%;
-    display: inline-block;
-    padding: 0.7em 1.7em;
-    border-radius: 0.2em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    color: black;
-    background-color: #b0b3bb;
-    box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-        inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-        inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-    text-align: center;
-    position: relative;
+	width: 20%;
+	margin: 0 0.3em 0.3em 0;
+	margin-top: 15px;
+	margin-left: 40%;
+	margin-right: 40%;
+	display: inline-block;
+	padding: 0.7em 1.7em;
+	border-radius: 0.2em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	color: black;
+	background-color: #b0b3bb;
+	box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17), inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+		inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+	text-align: center;
+	position: relative;
 }
 
 button.registerbtn {
-    width: 20%;
-    margin: 0 0.3em 0.3em 0;
-    margin-top: 15px;
-    margin-left: 40%;
-    margin-right: 40%;
-    display: inline-block;
-    padding: 0.7em 1.7em;
-    border-radius: 0.2em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    color: #ffffff;
-    background-color: #3369ff;
-    box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-        inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-        inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-    text-align: center;
-    position: relative;
+	width: 20%;
+	margin: 0 0.3em 0.3em 0;
+	margin-top: 15px;
+	margin-left: 40%;
+	margin-right: 40%;
+	display: inline-block;
+	padding: 0.7em 1.7em;
+	border-radius: 0.2em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	color: #ffffff;
+	background-color: #3369ff;
+	box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17), inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+		inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+	text-align: center;
+	position: relative;
 }
 button.registerbtn:active {
-    box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15),
-        inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+	box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
 }
 
 #updates {
-    background-color: #ffae00;
+	background-color: #ffae00;
 }
 
 button.loginbtn {
-    width: 20%;
-    margin: 0 0.3em 0.3em 0;
-    margin-top: 15px;
-    margin-left: 40%;
-    margin-right: 40%;
-    display: inline-block;
-    padding: 0.7em 1.7em;
-    border-radius: 0.2em;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    color: #ffffff;
-    background-color: #00a71c;
-    box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
-        inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
-        inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
-    text-align: center;
-    position: relative;
+	width: 20%;
+	margin: 0 0.3em 0.3em 0;
+	margin-top: 15px;
+	margin-left: 40%;
+	margin-right: 40%;
+	display: inline-block;
+	padding: 0.7em 1.7em;
+	border-radius: 0.2em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	color: #ffffff;
+	background-color: #00a71c;
+	box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17), inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
+		inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+	text-align: center;
+	position: relative;
 }
 button.loginbtn:active {
-    box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15),
-        inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
+	box-shadow: inset 0 0.6em 2em -0.3em rgba(0, 0, 0, 0.15), inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
 }
 
 a#nounderline {
-    text-decoration: none;
-    color: white;
+	text-decoration: none;
+	color: white;
 }
 
 .form-control {
-    width: 50%;
-    height: 40px;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    position: relative;
-    border-radius: 6px;
-    box-shadow: 2px 1px 2px 1px #e7e7e7;
+	width: 50%;
+	height: 40px;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	position: relative;
+	border-radius: 6px;
+	box-shadow: 2px 1px 2px 1px #e7e7e7;
 }
 
 #tologin {
-    color: white;
+	color: white;
 }
 
 #toright {
-    float: right;
-    margin-left: 25px;
-    text-decoration: underline;
+	float: right;
+	margin-left: 25px;
+	text-decoration: underline;
 }
 
 canvas {
-    border: 1px solid white;
-    background-color: rgb(27, 31, 39);
+	border: 1px solid white;
+	background-color: rgb(27, 31, 39);
 }
 
 #signernames {
-    color: red;
+	color: red;
 }
 
 #signedtext {
-    color: #4852ad;
-    font-size: 18px;
+	color: #4852ad;
+	font-size: 18px;
 }
 
 h3 {
-    background-color: none;
+	background-color: none;
 }
 
-/* h3:nth-of-type(even) {
-	/* background-color: pink;
-} */
-
 .deletingsignature {
-    background: none !important;
-    border: none;
-    padding: 0 !important;
-    font-family: "Roboto Mono", monospace;
-    color: #069;
-    text-decoration: underline;
-    cursor: pointer;
+	background: none !important;
+	border: none;
+	padding: 0 !important;
+	font-family: "Roboto Mono", monospace;
+	color: #069;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .credits {
-    font-size: 0.2em;
-    text-decoration: none;
+	font-size: 0.2em;
+	text-decoration: none;
 }
 
 #signcanvas {
-    margin-left: 200px;
-    margin-right: 200px;
+	margin-left: 200px;
+	margin-right: 200px;
 }
 
 footer {
-    background: #666666;
-    height: 30px;
-    display: block;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
+	background: #666666;
+	height: 30px;
+	display: block;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	overflow: hidden;
 }
 
 .footer {
-    font-family: "Roboto Mono", monospace;
-    padding: 7px 40px;
-    color: white;
-    font-size: 14px;
-    margin: auto;
+	font-family: "Roboto Mono", monospace;
+	padding: 7px 40px;
+	color: white;
+	font-size: 14px;
+	margin: auto;
+	background-color: black;
 }
 
 #redheart {
-    color: red;
+	color: red;
 }
 
 ::placeholder {
-    color: rgba(13, 0, 255, 0.603);
-    font-size: 1.2em;
-    text-align: center;
+	color: rgba(13, 0, 255, 0.603);
+	font-size: 1.2em;
+	text-align: center;
 }

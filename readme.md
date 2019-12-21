@@ -5,6 +5,6 @@ Users can log in, register, update their profiles, and provide their signature, 
 
 ## Technologies used
 
-Created with jQuery, Handlebars, Node, Express, and PostgreSQL
+Created with jQuery, Handlebars, Node, Express and PostgreSQL.
 
 ![Petition Website GIF] (public/petigif.gif)

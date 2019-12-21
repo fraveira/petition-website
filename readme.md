@@ -7,4 +7,4 @@ Users can log in, register, update their profiles, and provide their signature, 
 
 Created with jQuery, Handlebars, Node, Express and PostgreSQL.
 
-![Petition Website GIF] (https://github.com/fraveira/petition-website/blob/fraveira/public/petgif.gif)
+![petgif] (https://github.com/fraveira/petition-website/blob/fraveira/public/petgif.gif)

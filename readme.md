@@ -5,7 +5,7 @@ Users can log in, register, update their profiles, and provide their signature, 
 
 ## Technologies used
 
-Created with jQuery, Handlebars, Node, Express and PostgreSQL.
+Created with jQuery, Handlebars, Node, Express, MaterialUI and PostgreSQL.
 
 ![petgif](https://github.com/fraveira/petition-website/blob/fraveira/public/petgif.gif)
 

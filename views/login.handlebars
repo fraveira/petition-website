@@ -1,15 +1,33 @@
-<div class="regiform">
-<form method="POST">
- <div class="form-cont">
-        <input type="hidden" name="_csrf" value="{{csrfToken}}">
-  </div>
-  <div class="form-group">
-    <input type="email" name="email" placeholder="E-mail" class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="password" name="password" placeholder="Password" class="form-control">
-  </div>
-  <button class="loginbtn">Log In</button>
-</form>
-<p id="tologin">Or if you don't have an account, please <a href="/register">Register</a> now!</p>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email address</label>
+                    <input type="email" class="form-control" name="email" placeholder="E-Mail">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                
+                <button type="submit" class="btn btn-success btn-block mt-4">Login</button>
+                
+                <p class="mt-2">Or if you don't have an account, please:</p>
+            </form>
+            <div class="mx-auto">
+ <a href="/register"><button class="btn btn-warning btn-block">Register!</button></a>
+            </div>
+           
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
 </div>

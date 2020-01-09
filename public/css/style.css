@@ -1,14 +1,12 @@
-html {
+body {
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(48, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 46%);
+}
+
+/* html {
 	position: relative;
 	min-height: 100%;
 }
 
-body {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/nback.jpg");
-	background-size: cover;
-	background-position: 000px -120px;
-	font-family: "Roboto Mono", monospace;
-}
 
 h1 {
 	color: red;
@@ -178,13 +176,13 @@ a#nounderline {
 	float: right;
 	margin-left: 25px;
 	text-decoration: underline;
-}
+} */
 
 canvas {
 	border: 1px solid white;
 	background-color: rgb(27, 31, 39);
 }
-
+/* 
 #signernames {
 	color: red;
 }
@@ -211,14 +209,14 @@ h3 {
 .credits {
 	font-size: 0.2em;
 	text-decoration: none;
-}
+} */
 
 #signcanvas {
 	margin-left: 200px;
 	margin-right: 200px;
 }
 
-footer {
+/* footer {
 	background: #666666;
 	height: 30px;
 	display: block;
@@ -237,7 +235,7 @@ footer {
 	margin: auto;
 	background-color: black;
 }
-
+ */
 #redheart {
 	color: red;
 }
@@ -245,5 +243,13 @@ footer {
 ::placeholder {
 	color: rgba(13, 0, 255, 0.603);
 	font-size: 1.2em;
+	text-align: center;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 	text-align: center;
 }
